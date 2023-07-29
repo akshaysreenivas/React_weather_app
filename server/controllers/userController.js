@@ -1,23 +1,6 @@
 const axios = require("axios");
 
-// function convertdate(dateString) {
 
-//     // Create a new Date object from the provided date string
-//     const date = new Date(dateString);
-
-//     // Get individual components of the date in Indian Standard Time (IST)
-//     const year = date.getFullYear();
-//     const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1 to get the correct month
-//     const day = date.getDate();
-//     const hours = date.getHours();
-//     const minutes = date.getMinutes();
-//     const seconds = date.getSeconds();
-
-//     // Create a formatted date string in IST (e.g., "2023-07-28 12:23:29 IST")
-//     const formattedDate = `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")} ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")} IST`;
-//     return formattedDate;
-
-// }
 
 async function callApi(baseUrl, req, res, next) {
     axios.get(baseUrl)
