@@ -15,7 +15,8 @@ async function callApi(baseUrl, req, res, next) {
             let weatherTemp = `${weather.main.temp}`;
             let weatherPressure = `${weather.main.pressure}`;
             //  fetching the weather icon and its size using the icon data
-            let weatherIcon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+            // eslint-disable-next-line no-undef
+            let weatherIcon = `${process.env.WEATHER_API}/img/wn/${weather.weather[0].icon}@4x.png`;
             let weatherDescription = `${weather.weather[0].description}`;
             let humidity = `${weather.main.humidity}`;
             let clouds = `${weather.clouds.all}`;
@@ -62,7 +63,7 @@ module.exports.getSearchLocationWeather = async (req, res, next) => {
         if (!city) return res.status(400).json({ message: "city not found" });
         //build api URL with city and api key
         // eslint-disable-next-line no-undef
-        const baseUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.WEATHER_APT_KEY}`;
+        const baseUrl = `${process.env.WEATHER_API}/data/2.5/weather?q=${city}&units=metric&appid=${process.env.WEATHER_API_KEY}`;
         callApi(baseUrl, req, res, next);
     } catch (err) {
         next(err);
@@ -80,7 +81,7 @@ module.exports.getCurrentLocationWeather = async (req, res, next) => {
         if (!longitude || !latitude) return res.status(400).json({ message: "city not found" });
         //build api URL with city and api key
         // eslint-disable-next-line no-undef
-        const baseURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.WEATHER_APT_KEY}&units=metric`;
+        const baseURL = `${process.env.WEATHER_API}/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.WEATHER_API_KEY}&units=metric`;
         callApi(baseURL, req, res, next);
     } catch (err) {
         next(err);
