@@ -16,7 +16,7 @@ async function callApi(baseUrl, req, res, next) {
             let weatherPressure = `${weather.main.pressure}`;
             //  fetching the weather icon and its size using the icon data
             // eslint-disable-next-line no-undef
-            let weatherIcon = `${process.env.WEATHER_API}/img/wn/${weather.weather[0].icon}@4x.png`;
+            let weatherIcon = `${process.env.WEATHER_IMAGE_API}/img/wn/${weather.weather[0].icon}@4x.png`;
             let weatherDescription = `${weather.weather[0].description}`;
             let humidity = `${weather.main.humidity}`;
             let clouds = `${weather.clouds.all}`;
